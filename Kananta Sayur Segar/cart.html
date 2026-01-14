@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Keranjang Belanja - Kananta Sayur Segar">
+    <title>Keranjang Belanja - Kananta Sayur Segar</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav-logo">
+                    <div class="nav-logo-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="nav-logo-text">
+                        Kananta
+                        <span>Sayur Segar</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="index.html#products" class="nav-link">Produk</a></li>
+                    <li><a href="index.html#about" class="nav-link">Tentang</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Kontak</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="menu-toggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Page -->
+    <main class="cart-page">
+        <div class="container">
+            <div class="cart-container">
+                <!-- Cart Items Section -->
+                <div class="cart-section cart-items-section animate-on-scroll fade-up">
+                    <div class="cart-header">
+                        <div class="cart-title">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h2>Keranjang Belanja</h2>
+                            <span class="cart-count-badge" id="cart-items-count">0 item</span>
+                        </div>
+                        <button class="clear-cart-btn" onclick="clearCart()">
+                            <i class="fas fa-trash-alt"></i>
+                            Kosongkan
+                        </button>
+                    </div>
+
+                    <div class="cart-items-list" id="cart-items-list">
+                        <!-- Cart items will be rendered by JavaScript -->
+                    </div>
+
+                    <!-- Empty Cart State -->
+                    <div class="empty-cart animate-on-scroll fade-up" id="empty-cart" style="display: none;">
+                        <div class="empty-cart-icon">
+                            <i class="fas fa-shopping-basket"></i>
+                        </div>
+                        <h3>Keranjang Masih Kosong</h3>
+                        <p>Yuk mulai belanja sayuran segar untuk keluarga!</p>
+                        <a href="index.html#products" class="btn btn-primary">
+                            <i class="fas fa-shopping-bag"></i>
+                            Mulai Belanja
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-section cart-summary animate-on-scroll fade-up" style="transition-delay: 0.2s">
+                    <h3 class="summary-title">Ringkasan Pesanan</h3>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">Rp 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Biaya Pengiriman</span>
+                        <span>Sesuai Lokasi</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">Rp 0</span>
+                    </div>
+
+                    <!-- Order Notes -->
+                    <div class="order-notes">
+                        <label for="order-notes">
+                            <i class="fas fa-sticky-note"></i> Catatan Pesanan
+                            <br>
+                            <span style="font-size: 0.8em; color: #ff6b6b; font-style: italic;">NOTE: HARGA
+                                SEWAKTU-WAKTU BISA BERUBAH</span>
+                        </label>
+                        <textarea id="order-notes"
+                            placeholder="Tambahkan catatan untuk pesanan Anda... (contoh: alamat pengiriman, waktu pengiriman, dll)"></textarea>
+                    </div>
+
+                    <!-- Checkout Button -->
+                    <button class="checkout-btn" onclick="checkoutWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        Pesan via WhatsApp
+                    </button>
+
+                    <a href="index.html#products" class="continue-shopping">
+                        <i class="fas fa-arrow-left"></i> Lanjutkan Belanja
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p class="footer-copyright">&copy; 2026 Kananta Sayur Segar. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/6285806844758" class="social-link" title="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/kananta_sayursegar" class="social-link" title="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/6285806844758" target="_blank" class="whatsapp-float" title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" title="Kembali ke atas">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    <script>
+        // ===== Cart Page Specific Functions =====
+
+        function renderCart() {
+            const cartList = document.getElementById('cart-items-list');
+            const emptyCart = document.getElementById('empty-cart');
+            const itemsCount = document.getElementById('cart-items-count');
+            const subtotalEl = document.getElementById('subtotal');
+            const totalEl = document.getElementById('total');
+
+            if (!cartList) return;
+
+            if (cart.length === 0) {
+                cartList.style.display = 'none';
+                emptyCart.style.display = 'block';
+                document.querySelector('.cart-header').style.display = 'none';
+            } else {
+                cartList.style.display = 'flex';
+                emptyCart.style.display = 'none';
+                document.querySelector('.cart-header').style.display = 'flex';
+
+                cartList.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item animate-on-scroll fade-up" data-id="${item.id}" style="transition-delay: ${(index % 5) * 0.1}s">
+                        <div class="cart-item-image">
+                            ${item.image
+                        ? `<img src="${item.image}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                   <span style="display:none;">${item.emoji}</span>`
+                        : `<span>${item.emoji}</span>`
+                    }
+                        </div>
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>${item.unit}</p>
+                        </div>
+                        <div class="cart-item-price">${formatRupiah(item.price * item.qty)}</div>
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQty(${item.id}, -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="qty-value">${item.qty}</span>
+                            <button class="qty-btn" onclick="updateQty(${item.id}, 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                // Observe newly rendered items
+                if (typeof scrollObserver !== 'undefined' && scrollObserver) {
+                    cartList.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+                } else {
+                    // Fallback if observer not ready yet
+                    setTimeout(() => {
+                        if (typeof scrollObserver !== 'undefined' && scrollObserver) {
+                            cartList.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+                        }
+                    }, 500);
+                }
+            }
+
+            // Update summary
+            const total = getCartTotal();
+            const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            itemsCount.textContent = `${itemCount} item`;
+            subtotalEl.textContent = formatRupiah(total);
+            totalEl.textContent = formatRupiah(total);
+        }
+
+        // Initialize cart page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>
